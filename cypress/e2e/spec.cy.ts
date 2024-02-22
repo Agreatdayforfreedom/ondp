@@ -1,5 +1,5 @@
 describe("template spec", () => {
   it("passes", () => {
-    cy.visit("https://ondp.netlify.app/");
+    cy.visit("http://localhost:5751");
   });
 });

@@ -10,6 +10,18 @@ on:
 # List of jobs
 # A "job" is a set of steps that are executed on the same runner
 jobs:
+  cypress-run:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          build: npm run build
+          start: npm start
   # Name of the job
   test-and-deploy-to-netlify:
     # Operating system to run on
@@ -49,15 +61,3 @@ jobs:
           install_command: npm install
           # Command to build static website
           build_command: npm run build
-  cypress-run:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
-        with:
-          build: npm run build
-          start: npm start

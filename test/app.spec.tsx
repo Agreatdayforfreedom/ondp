@@ -8,7 +8,7 @@ describe("app", () => {
 
     let el = screen.getByRole("heading");
 
-    expect(el).toHaveTextContent("Vite + React");
+    expect(el).toHaveTextContent("Chiner");
     expect(el).toBeInTheDocument();
   });
 });

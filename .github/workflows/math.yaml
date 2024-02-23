@@ -41,7 +41,7 @@ jobs:
       - name: download sum.txt
         uses: actions/download-artifact@v4
         with:
-          name: pre
+          name: end
       - name: print ok or exit
         shell: bash
         run: |

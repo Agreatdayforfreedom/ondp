@@ -9,7 +9,7 @@ jobs:
     steps:
       - shell: bash
         run: |
-          echo '10 + 40' | bc > sum.txt
+          echo "10 + 40" | bc > sum.txt
       - name: Upload math result
         uses: actions/upload-artifact@v4
         with:
@@ -27,7 +27,7 @@ jobs:
       - shell: bash
         run: |
           val=`cat sum.txt`
-          echo '$val * 20' | bc > sum.txt
+          echo "$val * 20" | bc > sum.txt
       - name: Multiplication
         uses: actions/upload-artifact@v4
         with:

@@ -1,0 +1,50 @@
+name: Maths
+
+on: [push]
+
+jobs:
+  compute:
+    name: Sum
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: |
+          echo '10 + 40' | bc > sum.txt
+      - name: Upload math result
+        uses: actions/upload-artifact@v4
+        with:
+          name: pre
+          path: sum.txt
+  mult:
+    name: Mult
+    needs: sum
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download sum.txt
+        uses: actions/download-artifact@v4
+        with:
+          name: pre
+      - shell: bash
+        run: |
+          val=`cat sum.txt`
+          echo '$val * 20' > sum.txt
+      - name: Multiplication
+        uses: actions/upload-artifact@v4
+        with:
+          name: end
+          path: sum.txt
+  test:
+    needs: mult
+    name: testing correct value
+    uses: actions/download-artifact@v4
+    with:
+      name: pre
+  - name: print ok or exit
+    shell: bash
+    run: |
+      val=`cat sum.txt`
+      if (($val == 10000)); then echo "ok"; else exit 1; fi
+  
+  
+
+      

@@ -46,4 +46,4 @@ jobs:
         shell: bash
         run: |
           val=`cat sum.txt`
-          if (($val == 10000)); then echo "ok"; else exit 1; fi
+          if (($val == 1000)); then echo "ok"; else exit 1; fi

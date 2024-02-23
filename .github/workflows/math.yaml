@@ -34,17 +34,16 @@ jobs:
           name: end
           path: sum.txt
   test:
-    needs: mult
     name: testing correct value
-    uses: actions/download-artifact@v4
-    with:
-      name: pre
-  - name: print ok or exit
-    shell: bash
-    run: |
-      val=`cat sum.txt`
-      if (($val == 10000)); then echo "ok"; else exit 1; fi
-  
-  
-
-      
+    needs: mult
+    runs-on: ubuntu-latest
+    steps:
+      - name: download sum.txt
+        uses: actions/download-artifact@v4
+        with:
+          name: pre
+      - name: print ok or exit
+        shell: bash
+        run: |
+          val=`cat sum.txt`
+          if (($val == 10000)); then echo "ok"; else exit 1; fi

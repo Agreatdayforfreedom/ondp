@@ -17,7 +17,7 @@ jobs:
           path: sum.txt
   mult:
     name: Mult
-    needs: sum
+    needs: compute
     runs-on: ubuntu-latest
     steps:
       - name: Download sum.txt
